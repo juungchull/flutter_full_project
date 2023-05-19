@@ -69,7 +69,7 @@ Widget buildTextField(String hintText, String textType, String iconName) {
       color: Colors.white,
       borderRadius: BorderRadius.circular(15.w),
       border: Border.all(
-        color: Colors.black,
+        color: AppColors.primaryFourElementText,
       ),
     ),
     child: Row(
@@ -86,30 +86,33 @@ Widget buildTextField(String hintText, String textType, String iconName) {
           child: TextField(
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
-                hintText: hintText,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+              hintText: hintText,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
                 ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
                 ),
-                hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5))),
+              ),
+              hintStyle: TextStyle(
+                color: AppColors.primarySecondaryElementText,
+              ),
+            ),
             style: TextStyle(
-                color: Colors.black,
+                color: AppColors.primaryText,
                 fontFamily: 'Avenir',
                 fontWeight: FontWeight.normal,
                 fontSize: 14.sp),
@@ -132,9 +135,9 @@ Widget forgotPassword() {
       child: Text(
         'Forgot password',
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           decoration: TextDecoration.underline,
-          decorationColor: Colors.blue,
+          decorationColor: AppColors.primaryText,
           fontSize: 12.sp,
         ),
       ),
