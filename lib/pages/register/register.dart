@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_full_project/pages/sign_in/bloc/sign_in_event.dart';
-import 'package:flutter_full_project/pages/sign_in/sign_in_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'bloc/sign_in_bloc.dart';
-import 'bloc/sign_in_state.dart';
 import '../common_widgets.dart';
-// import 'widgets/sign_in_widget.dart';
+import '../sign_in/bloc/sign_in_bloc.dart';
+import '../sign_in/bloc/sign_in_event.dart';
+import '../sign_in/bloc/sign_in_state.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  _SignInState createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInBloc, SignInState>(
@@ -26,14 +24,15 @@ class _SignInState extends State<SignIn> {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: Colors.white,
-              appBar: buildAppBar('Sign In'),
+              appBar: buildAppBar('Sign Up'),
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    buildThirdPartyLogin(context),
+                    SizedBox(height: 20.h),
                     Center(
-                      child: reusableText('Or use your email account login'),
+                      child: reusableText(
+                          'Enter your details below & free sign up'),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: 25.w),
@@ -41,17 +40,28 @@ class _SignInState extends State<SignIn> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          reusableText('User name'),
+                          buildTextField('Enter your user name', 'user', 'user',
+                              (value) {
+                            // context.read<SignInBloc>().add(EmailEvent(value));
+                          }),
                           reusableText('Email'),
-                          SizedBox(height: 5.h),
                           buildTextField(
                               'Enter your email address', 'email', 'user',
                               (value) {
-                            context.read<SignInBloc>().add(EmailEvent(value));
+                            // context.read<SignInBloc>().add(EmailEvent(value));
                           }),
                           reusableText('Password'),
-                          SizedBox(height: 5.h),
                           buildTextField(
-                              'Enter your password', 'password', 'lock',
+                              'Enter your Password', 'password', 'lock',
+                              (value) {
+                            context
+                                .read<SignInBloc>()
+                                .add(PasswordEvent(value));
+                          }),
+                          reusableText('Confirm Password'),
+                          buildTextField(
+                              'Enter your Confirm Password', 'password', 'lock',
                               (value) {
                             context
                                 .read<SignInBloc>()
@@ -60,12 +70,13 @@ class _SignInState extends State<SignIn> {
                         ],
                       ),
                     ),
-                    forgotPassword(),
-                    buildLogInAndRegButton('Log In', 'login', () {
-                      // print('login button');
-                      SignInController(context: context).handleSignIn('email');
-                    }),
-                    buildLogInAndRegButton('Sign Up', 'register', () {
+                    Container(
+                      width: 280.w,
+                      padding: EdgeInsets.only(left: 25.w),
+                      child: reusableText(
+                          'By creating an account you have to agree with our them & condication.'),
+                    ),
+                    buildLogInAndRegButton('Sign up', 'login', () {
                       Navigator.of(context).pushNamed('register');
                     }),
                   ],
