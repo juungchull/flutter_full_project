@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
+import 'package:flutter_full_project/pages/register/bloc/register_event.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../common_widgets.dart';
-import '../sign_in/bloc/sign_in_bloc.dart';
-import '../sign_in/bloc/sign_in_event.dart';
-import '../sign_in/bloc/sign_in_state.dart';
+import 'bloc/register_state.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInBloc, SignInState>(
+    return BlocBuilder<RegisterBloc, RegisterState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,
@@ -44,28 +44,32 @@ class _RegisterState extends State<Register> {
                           buildTextField('Enter your user name', 'user', 'user',
                               (value) {
                             // context.read<SignInBloc>().add(EmailEvent(value));
+                            context
+                                .read<RegisterBloc>()
+                                .add(UserNameEvent(value));
                           }),
                           reusableText('Email'),
                           buildTextField(
                               'Enter your email address', 'email', 'user',
                               (value) {
                             // context.read<SignInBloc>().add(EmailEvent(value));
+                            context.read<RegisterBloc>().add(EmailEvent(value));
                           }),
                           reusableText('Password'),
                           buildTextField(
                               'Enter your Password', 'password', 'lock',
                               (value) {
-                            context
-                                .read<SignInBloc>()
-                                .add(PasswordEvent(value));
+                            // context
+                            //     .read<SignInBloc>()
+                            //     .add(PasswordEvent(value));
                           }),
                           reusableText('Confirm Password'),
                           buildTextField(
                               'Enter your Confirm Password', 'password', 'lock',
                               (value) {
-                            context
-                                .read<SignInBloc>()
-                                .add(PasswordEvent(value));
+                            // context
+                            //     .read<SignInBloc>()
+                            //     .add(PasswordEvent(value));
                           }),
                         ],
                       ),
