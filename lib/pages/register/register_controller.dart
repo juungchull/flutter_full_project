@@ -6,8 +6,7 @@ import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
 
 class RegisterController {
   final BuildContext context;
-
-  RegisterController(this.context);
+  RegisterController({required this.context});
 
   Future<void> handleEmailRegister() async {
     final state = context.read<RegisterBloc>().state;
@@ -43,6 +42,7 @@ class RegisterController {
         toastInfo(
             msg:
                 "An email has been sent to your registered email.To activate it please check your email box and click on the link");
+        Navigator.of(context).pop();
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

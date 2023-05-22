@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
 import 'package:flutter_full_project/pages/register/bloc/register_event.dart';
+import 'package:flutter_full_project/pages/register/register_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../common_widgets.dart';
@@ -81,7 +82,9 @@ class _RegisterState extends State<Register> {
                           'By creating an account you have to agree with our them & condication.'),
                     ),
                     buildLogInAndRegButton('Sign up', 'login', () {
-                      Navigator.of(context).pushNamed('register');
+                      // Navigator.of(context).pushNamed('register');
+                      RegisterController(context: context)
+                          .handleEmailRegister();
                     }),
                   ],
                 ),
