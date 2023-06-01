@@ -7,7 +7,7 @@ import 'package:flutter_full_project/common/values/colors.dart';
 import 'package:flutter_full_project/pages/application/application_page.dart';
 import 'package:flutter_full_project/pages/bloc_provider.dart';
 import 'package:flutter_full_project/pages/sign_in/sign_in.dart';
-import 'package:flutter_full_project/pages/welcome/welcome.dart';
+// import 'package:flutter_full_project/pages/welcome/welcome.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:firebase_core/firebase_core.dart';
