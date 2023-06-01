@@ -4,6 +4,7 @@ import 'package:flutter_full_project/app_blocs.dart';
 import 'package:flutter_full_project/app_events.dart';
 import 'package:flutter_full_project/app_state.dart';
 import 'package:flutter_full_project/common/values/colors.dart';
+import 'package:flutter_full_project/pages/application/application_page.dart';
 import 'package:flutter_full_project/pages/bloc_provider.dart';
 import 'package:flutter_full_project/pages/sign_in/sign_in.dart';
 import 'package:flutter_full_project/pages/welcome/welcome.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.white,
             )),
             debugShowCheckedModeBanner: false,
-            home: Welcome(),
+            home: ApplicationPage(),
             routes: {
               'myHomePage': (context) => MyHomePage(),
               'signIn': (context) => SignIn(),
