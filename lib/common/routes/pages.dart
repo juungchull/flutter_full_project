@@ -11,15 +11,15 @@ import 'package:flutter_full_project/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:flutter_full_project/pages/welcome/welcome.dart';
 
 class PageEntity {
-  String route;
-  Widget page;
-  dynamic bloc;
-
   PageEntity({
     required this.route,
     required this.page,
     this.bloc,
   });
+
+  dynamic bloc;
+  Widget page;
+  String route;
 }
 
 //return all blocprovider

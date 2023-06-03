@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'pages/welcome/welcome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,28 +28,26 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
-        builder: (context, child) {
-          return MaterialApp(
-            theme: ThemeData(
-                appBarTheme: AppBarTheme(
-              iconTheme: IconThemeData(
-                color: AppColors.primaryText,
-              ),
-              centerTitle: true,
-              elevation: 0,
-              backgroundColor: Colors.white,
-            )),
-            debugShowCheckedModeBanner: false,
-            // home: Welcome(),
-            onGenerateRoute: AppPages.GenerateRouteSettings,
-            // initialRoute: "/",
-            // routes: {
-            //   'myHomePage': (context) => MyHomePage(),
-            //   'signIn': (context) => SignIn(),
-            //   'register': (context) => Register(),
-            // },
-          );
-        },
+        builder: (context, child) => MaterialApp(
+          theme: ThemeData(
+              appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(
+              color: AppColors.primaryText,
+            ),
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: Colors.white,
+          )),
+          debugShowCheckedModeBanner: false,
+          // home: const Welcome(),
+          onGenerateRoute: AppPages.GenerateRouteSettings,
+          // initialRoute: "/",
+          // routes: {
+          //   'myHomePage': (context) => MyHomePage(),
+          //   'signIn': (context) => SignIn(),
+          //   'register': (context) => Register(),
+          // },
+        ),
       ),
     );
   }
