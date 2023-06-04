@@ -40,7 +40,7 @@ class SignInController {
           if (!credential.user!.emailVerified) {
             //
             // print('not varified');
-            toastInfo(msg: 'You need to verfy your email account');
+            toastInfo(msg: 'You need to verify your email account');
             return;
           }
 
@@ -48,6 +48,8 @@ class SignInController {
           if (user != null) {
             //We got verified user from firebase
             print('user exist');
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
             //We have error getting user from firebase
             // print('no user');

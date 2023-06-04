@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_full_project/common/routes/names.dart';
+import 'package:flutter_full_project/pages/application/application_page.dart';
+import 'package:flutter_full_project/pages/application/bloc/app_bloc.dart';
 import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
 import 'package:flutter_full_project/pages/register/register.dart';
 import 'package:flutter_full_project/pages/sign_in/bloc/sign_in_bloc.dart';
@@ -49,10 +51,10 @@ class AppPages {
       ),
       PageEntity(
         route: AppRoutes.APPLICATION,
-        page: Welcome(),
-        // bloc: BlocProvider(
-        //   create: (_) => WelcomeBloc(),
-        // ),
+        page: const ApplicationPage(),
+        bloc: BlocProvider(
+          create: (_) => AppBloc(),
+        ),
       ),
     ];
   }
@@ -70,11 +72,15 @@ class AppPages {
     //check for route name matching when navigator gets triggered.
     if (settings.name != null) {
       var result = routes().where((element) => element.route == settings.name);
+      print("valid route name ${settings.name}");
+
       if (result.isNotEmpty) {
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }
     }
+    print("valid route name ${settings.name}");
+
     return MaterialPageRoute(builder: (_) => SignIn(), settings: settings);
   }
 }
