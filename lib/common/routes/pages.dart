@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_full_project/common/routes/names.dart';
+import 'package:flutter_full_project/global.dart';
 import 'package:flutter_full_project/pages/application/application_page.dart';
 import 'package:flutter_full_project/pages/application/bloc/app_bloc.dart';
 import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
@@ -75,6 +76,19 @@ class AppPages {
       print("valid route name ${settings.name}");
 
       if (result.isNotEmpty) {
+        print("first log");
+        print(result.first.route);
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+          bool isLoggedIn = Global.storageService.getIsLoggedIn();
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => ApplicationPage(), settings: settings);
+          }
+          print("second log");
+          return MaterialPageRoute(
+              builder: (_) => SignIn(), settings: settings);
+        }
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }
