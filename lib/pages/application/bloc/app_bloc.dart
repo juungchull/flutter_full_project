@@ -6,6 +6,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc() : super(AppState()) {
     on<TriggerAppEvent>(
       (event, emit) {
+        print("my tapped index is ${event.index}");
         emit(AppState(index: event.index));
       },
     );

@@ -42,7 +42,8 @@ dependencies:
   firebase_auth: ^4.6.1
   equatable: ^2.0.5
   firebase_core:
-  fluttertoast: ^8.2.1
+  fluttertoast: ^8.2.2
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

@@ -17,14 +17,14 @@ class SignInController {
         String emailAddress = state.email;
         String password = state.password;
         if (emailAddress.isEmpty) {
-          // print('email is empty');
-          toastInfo(msg: 'You need to fill email address');
+          print('email is empty');
+          toastInfo(msg: "You need to fill email address");
           return;
         }
         if (password.isEmpty) {
           //
           // print('password is empty');
-          toastInfo(msg: 'You need to fill password');
+          toastInfo(msg: "You need to fill password");
           return;
         }
         try {
@@ -34,14 +34,14 @@ class SignInController {
           if (credential.user == null) {
             //
             // print('user does not exist');
-            toastInfo(msg: 'You don\'t exist');
+            toastInfo(msg: "You don't exist");
             return;
           }
           if (!credential.user!.emailVerified) {
             //
             // print('not varified');
-            toastInfo(msg: 'You need to verify your email account');
-            return;
+            // toastInfo(msg: "You need to verify your email account");
+            // return;
           }
 
           var user = credential.user;
@@ -53,21 +53,21 @@ class SignInController {
           } else {
             //We have error getting user from firebase
             // print('no user');
-            toastInfo(msg: 'Currently you are not a user of this app');
-            return;
+            toastInfo(msg: "Currently you are not a user of this app");
+            // return;
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
             // print('No user found for that email.');
-            toastInfo(msg: 'No user found for that email');
+            toastInfo(msg: "No user found for that email");
             //toastInfo (msg: 'No user found for that email');
           } else if (e.code == 'wrong-password') {
             //toastInfo(msg:'Wrong password provided for that user.');
             // print('Wrong password provided for that user.');
-            toastInfo(msg: 'Wrong passwor provided for that user');
+            toastInfo(msg: "Wrong passwor provided for that user");
           } else if (e.code == 'invalid-email') {
             // print('Your email format is wrong');
-            toastInfo(msg: 'Your email format is wrong');
+            toastInfo(msg: "Your email format is wrong");
           }
         }
       }

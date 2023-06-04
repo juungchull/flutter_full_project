@@ -2,6 +2,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_full_project/common/values/colors.dart';
+import 'package:flutter_full_project/common/values/constant.dart';
+import 'package:flutter_full_project/global.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'bloc/welcome_bloc.dart';
@@ -143,6 +145,10 @@ class _WelcomeState extends State<Welcome> {
               //     builder: (context) => MyHomePage(title: title),
               //   ),
               // );
+              Global.storageService
+                  .setBool(AppConstant.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print(
+                  "The value is ${Global.storageService.getDeviceFirstOpen()}");
               Navigator.of(context)
                   .pushNamedAndRemoveUntil('/sign_in', (route) => false);
             }
