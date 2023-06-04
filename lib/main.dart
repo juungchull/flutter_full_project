@@ -5,9 +5,6 @@ import 'package:flutter_full_project/common/values/colors.dart';
 import 'package:flutter_full_project/global.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-
 Future<void> main() async {
   await Global.init();
   runApp(const MyApp());
