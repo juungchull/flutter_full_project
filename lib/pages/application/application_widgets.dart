@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/values/colors.dart';
+import '../home/home_page.dart';
 
 Widget buildPage(int index) {
   List<Widget> _widget = [
-    Center(child: Text("home")),
+    HomePage(),
     Center(child: Text("Search")),
     Center(child: Text("Course")),
     Center(child: Text("Chat")),
@@ -14,8 +15,7 @@ Widget buildPage(int index) {
   return _widget[index];
 }
 
-
-var bottomTabs=[
+var bottomTabs = [
   BottomNavigationBarItem(
     label: "home",
     icon: SizedBox(
@@ -96,4 +96,4 @@ var bottomTabs=[
       ),
     ),
   ),
-] ;
+];
