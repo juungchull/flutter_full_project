@@ -79,7 +79,7 @@ class AppPages {
         print("first log");
         print(result.first.route);
         bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
-        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+        /*if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
           bool isLoggedIn = Global.storageService.getIsLoggedIn();
           if (isLoggedIn) {
             return MaterialPageRoute(
@@ -88,7 +88,7 @@ class AppPages {
           print("second log");
           return MaterialPageRoute(
               builder: (_) => SignIn(), settings: settings);
-        }
+        }*/
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }
