@@ -6,12 +6,15 @@ import 'package:flutter_full_project/common/routes/names.dart';
 import 'package:flutter_full_project/global.dart';
 import 'package:flutter_full_project/pages/application/application_page.dart';
 import 'package:flutter_full_project/pages/application/bloc/app_bloc.dart';
+import 'package:flutter_full_project/pages/home/home_page.dart';
 import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
 import 'package:flutter_full_project/pages/register/register.dart';
 import 'package:flutter_full_project/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:flutter_full_project/pages/sign_in/sign_in.dart';
 import 'package:flutter_full_project/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:flutter_full_project/pages/welcome/welcome.dart';
+
+import '../../pages/home/bloc/home_page_bloc.dart';
 
 class PageEntity {
   PageEntity({
@@ -57,6 +60,13 @@ class AppPages {
           create: (_) => AppBloc(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.HOME_PAGE,
+        page: const HomePage(),
+        bloc: BlocProvider(
+          create: (_) => HomePageBloc(),
+        ),
+      ),
     ];
   }
 
@@ -79,7 +89,7 @@ class AppPages {
         print("first log");
         print(result.first.route);
         bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
-        /*if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
           bool isLoggedIn = Global.storageService.getIsLoggedIn();
           if (isLoggedIn) {
             return MaterialPageRoute(
@@ -88,7 +98,7 @@ class AppPages {
           print("second log");
           return MaterialPageRoute(
               builder: (_) => SignIn(), settings: settings);
-        }*/
+        }
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }

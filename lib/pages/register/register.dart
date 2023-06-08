@@ -36,8 +36,8 @@ class _RegisterState extends State<Register> {
                           'Enter your details below & free sign up'),
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 25.w),
-                      margin: EdgeInsets.only(top: 66.h),
+                      padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                      margin: EdgeInsets.only(top: 60.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
