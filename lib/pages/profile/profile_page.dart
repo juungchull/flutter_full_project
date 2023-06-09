@@ -13,6 +13,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildAppbar(),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -20,23 +21,12 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 6.w),
-                child: Image(
-                  width: 25.w,
-                  height: 25.h,
-                  image: AssetImage("assets/icons/edit_3.png"),
-                ),
-                width: 80.w,
-                height: 80.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.w),
-                  image: DecorationImage(
-                    image: AssetImage("assets/icons/headpic.png"),
-                  ),
-                ),
-              )
+              profileIconAndEditButton(),
+              SizedBox(height: 30.h),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w),
+                child: buildListView(),
+              ),
             ],
           ),
         ),
