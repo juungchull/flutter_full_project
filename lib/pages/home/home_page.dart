@@ -43,14 +43,16 @@ class _HomePageState extends State<HomePage> {
                       EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
                   sliver: SliverGrid(
                     delegate: SliverChildBuilderDelegate(
-                        childCount: 8,
-                        (BuildContext context, int index) => Container(
-                              color: Colors.red,
+                        childCount: 4,
+                        (BuildContext context, int index) => GestureDetector(
+                              onTap: () {},
+                              child: courseGrid(),
                             )),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 15,
                       crossAxisSpacing: 15,
+                      childAspectRatio: 1.6,
                     ),
                   ),
                 ),
