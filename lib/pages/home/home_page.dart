@@ -27,16 +27,33 @@ class _HomePageState extends State<HomePage> {
               vertical: 0,
               horizontal: 25.w,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText("Hello,",
-                    color: AppColors.primaryThirdElementText),
-                homePageText("jungchul", top: 5),
-                SizedBox(height: 20.h),
-                searchView(),
-                sliderView(context, state),
-                menuView(),
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText("Hello,",
+                      color: AppColors.primaryThirdElementText),
+                ),
+                SliverToBoxAdapter(child: homePageText("jungchul", top: 5)),
+                SliverPadding(padding: EdgeInsets.only(top: 20.h)),
+                SliverToBoxAdapter(child: searchView()),
+                SliverToBoxAdapter(child: sliderView(context, state)),
+                SliverToBoxAdapter(child: menuView()),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
+                  sliver: SliverGrid(
+                    delegate: SliverChildBuilderDelegate(
+                        childCount: 8,
+                        (BuildContext context, int index) => Container(
+                              color: Colors.red,
+                            )),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 15,
+                    ),
+                  ),
+                ),
               ],
             ),
           );
