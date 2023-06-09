@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage> {
                 homePageText("jungchul", top: 5),
                 SizedBox(height: 20.h),
                 searchView(),
-                sliderView(),
+                sliderView(context, state),
+                menuView(),
               ],
             ),
           );

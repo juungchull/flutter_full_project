@@ -1,6 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_full_project/common/values/colors.dart';
+import 'package:flutter_full_project/pages/home/bloc/home_page_bloc.dart';
+import 'package:flutter_full_project/pages/home/bloc/home_page_event.dart';
+import 'package:flutter_full_project/pages/home/bloc/home_page_state.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar() {
@@ -132,7 +136,7 @@ Widget searchView() {
   );
 }
 
-Widget sliderView() {
+Widget sliderView(BuildContext context, HomePageState state) {
   return Column(
     children: [
       Container(
@@ -140,6 +144,10 @@ Widget sliderView() {
         width: 325.w,
         height: 160.h,
         child: PageView(
+          onPageChanged: (value) {
+            print(value.toString());
+            context.read<HomePageBloc>().add(HomePageDots(value));
+          },
           children: [
             _sliderContainer(path: "assets/icons/Art.png"),
             _sliderContainer(path: "assets/icons/Image(1).png"),
@@ -150,7 +158,7 @@ Widget sliderView() {
       Container(
         child: DotsIndicator(
           dotsCount: 3,
-          position: 1,
+          position: state.index.toInt(),
           decorator: DotsDecorator(
               color: AppColors.primaryThirdElementText,
               activeColor: AppColors.primaryElement,
@@ -175,6 +183,85 @@ Widget _sliderContainer({String path = "assets/icons/Art.png"}) {
         fit: BoxFit.fill,
         image: AssetImage(path),
       ),
+    ),
+  );
+}
+
+Widget menuView() {
+  return Column(
+    children: [
+      Container(
+        width: 325.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            _reusableMenuText("Choose your course"),
+            GestureDetector(
+              child: _reusableMenuText("See all",
+                  color: AppColors.primaryThirdElementText, fontSize: 10),
+            ),
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 20.w),
+        child: Row(children: [
+          _reusableText("All"),
+          _reusableText("Popular",
+              textColor: AppColors.primaryThirdElementText,
+              bgColor: AppColors.primaryBackground),
+          _reusableText("Newest",
+              textColor: AppColors.primaryThirdElementText,
+              bgColor: AppColors.primaryBackground),
+        ]),
+      )
+    ],
+  );
+}
+
+Widget _reusableMenuText(String text,
+    {Color color = AppColors.primaryText,
+    int fontSize = 16,
+    FontWeight fontWeight = FontWeight.bold}) {
+  return Container(
+    child: Text(
+      text,
+      style: TextStyle(
+        color: color,
+        fontWeight: fontWeight,
+        fontSize: fontSize.sp,
+      ),
+    ),
+  );
+}
+
+Widget _reusableText(
+  String menuText, {
+  Color textColor = AppColors.primaryElementText,
+  Color bgColor = AppColors.primaryElement,
+}) {
+  return Container(
+    margin: EdgeInsets.only(right: 20.w),
+    padding: EdgeInsets.only(
+      left: 15.w,
+      right: 15.w,
+      top: 5.h,
+      bottom: 5.h,
+    ),
+    decoration: BoxDecoration(
+      color: bgColor,
+      borderRadius: BorderRadius.circular(7.w),
+      border: Border.all(
+        color: bgColor,
+      ),
+    ),
+    child: _reusableMenuText(
+      menuText,
+      color: textColor,
+      fontWeight: FontWeight.normal,
+      fontSize: 11,
     ),
   );
 }
