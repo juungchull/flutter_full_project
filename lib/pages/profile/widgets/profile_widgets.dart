@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_full_project/common/values/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/routes/names.dart';
+
 AppBar buildAppbar() {
   return AppBar(
     title: Container(
@@ -72,8 +74,8 @@ Widget buildListView(BuildContext context) {
       ...List.generate(
         imagesInfo.length,
         (index) => GestureDetector(
-          // onTap: () => Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
-          onTap: func,
+          onTap: () => Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
+          // onTap: func,
           child: Container(
             child: Row(
               children: [
