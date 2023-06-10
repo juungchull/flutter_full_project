@@ -1,13 +1,13 @@
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'settings_event.dart';
-part 'settings_state.dart';
+import 'settings_event.dart';
+import 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  SettingsBloc() : super(SettingsInitial()) {
-    on<SettingsEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  SettingsBloc() : super(SettingsState()) {
+    on<TriggerSettings>(_triggerSettings);
+  }
+  _triggerSettings(SettingsEvent event, Emitter<SettingsState> emit) {
+    emit(SettingsState());
   }
 }

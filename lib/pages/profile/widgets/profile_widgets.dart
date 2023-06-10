@@ -61,12 +61,19 @@ var imagesInfo = <String, String>{
   "Love": "heart(1).png",
   "Learnign Reminders": "cube.png",
 };
-Widget buildListView() {
+
+void func() {
+  print("on tapped");
+}
+
+Widget buildListView(BuildContext context) {
   return Column(
     children: [
       ...List.generate(
         imagesInfo.length,
         (index) => GestureDetector(
+          // onTap: () => Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
+          onTap: func,
           child: Container(
             child: Row(
               children: [

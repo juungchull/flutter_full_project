@@ -7,6 +7,8 @@ import 'package:flutter_full_project/global.dart';
 import 'package:flutter_full_project/pages/application/application_page.dart';
 import 'package:flutter_full_project/pages/application/bloc/app_bloc.dart';
 import 'package:flutter_full_project/pages/home/home_page.dart';
+import 'package:flutter_full_project/pages/profile/settings/bloc/settings_bloc.dart';
+import 'package:flutter_full_project/pages/profile/settings/settings_page.dart';
 import 'package:flutter_full_project/pages/register/bloc/register_bloc.dart';
 import 'package:flutter_full_project/pages/register/register.dart';
 import 'package:flutter_full_project/pages/sign_in/bloc/sign_in_bloc.dart';
@@ -65,6 +67,13 @@ class AppPages {
         page: const HomePage(),
         bloc: BlocProvider(
           create: (_) => HomePageBloc(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.SETTINGS,
+        page: const SettingsPage(),
+        bloc: BlocProvider(
+          create: (_) => SettingsBloc(),
         ),
       ),
     ];
