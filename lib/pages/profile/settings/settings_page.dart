@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_full_project/common/routes/names.dart';
+import 'package:flutter_full_project/common/values/constant.dart';
+import 'package:flutter_full_project/pages/application/bloc/app_bloc.dart';
+import 'package:flutter_full_project/pages/application/bloc/app_event.dart';
 import 'package:flutter_full_project/pages/profile/settings/bloc/settings_bloc.dart';
 import 'package:flutter_full_project/pages/profile/settings/bloc/settings_state.dart';
 import 'package:flutter_full_project/pages/profile/settings/widgets/settings_widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../global.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -13,6 +18,14 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  void removeUserData() {
+    context.read<AppBloc>().add(TriggerAppEvent(0));
+    Global.storageService.remove(AppConstant.STORAGE_USER_PROFILE_KEY);
+
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(AppRoutes.SIGN_IN, (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,35 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
             return Container(
               child: Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text("Confirm logout"),
-                            content: Text("Confirm logout"),
-                            actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text("Cancle")),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      height: 100.w,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fitHeight,
-                          image: AssetImage("assets/icons/Logout.png"),
-                        ),
-                      ),
-                    ),
-                  )
+                  settingsButton(context, removeUserData),
                 ],
               ),
             );
