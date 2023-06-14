@@ -30,6 +30,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: Text("Confirm logout"),
+                            content: Text("Confirm logout"),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Cancle")),
+                            ],
                           );
                         },
                       );
